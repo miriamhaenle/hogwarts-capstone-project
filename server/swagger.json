@@ -1,0 +1,249 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Wizard Shop API",
+    "description": "Ecommerce api for a wizard shop.",
+    "licencse": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:4000",
+  "basePath": "/",
+
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/customers": {
+      "get": {
+        "tags": ["Customers"],
+        "summary": "Get all customers from the database",
+        "description": "Returns all customers from the database",
+        "repsonses": {
+          "200": {
+            "description": "ok",
+            "schema": "#/definitions/Customers"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Customers"],
+        "summary": "Post a new customer",
+        "description": "Create a new customer in the database",
+        "parameters": [
+          {
+            "name": "customer",
+            "in": "body",
+            "description": "Customer we want to create",
+            "schema": { "$ref": "#/definitions/Customers" }
+          }
+        ],
+        "requestBody": {
+          "content": ["application/json"],
+          "schema": "#/definitions/Customers"
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "New customer was created",
+            "schema": {
+              "$ref": "#/definitions/Customers"
+            }
+          }
+        }
+      }
+    },
+    "/customers/:customerId": {
+      "get": {
+        "tags": ["Customers"],
+        "summary": "Get a single customer",
+        "description": "Returns data of the customer related to the provided userId",
+        "repsonses": {
+          "200": {
+            "description": "ok",
+            "schema": "#/definitions/Customers"
+          }
+        }
+      }
+    },
+    "/products": {
+      "get": {
+        "tags": ["Products"],
+        "summary": "Get all products",
+        "description": "Returns all products from the database",
+        "responses": {
+          "200": {
+            "description": "ok",
+            "schema": "#/definitions/Products"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Products"],
+        "summary": "Create a new product",
+        "description": "Creates a new product in the database",
+        "parameters": [
+          {
+            "name": "product",
+            "in": "body",
+            "description": "Product we want to create",
+            "schema": { "$ref": "#/definitions/Products" }
+          }
+        ],
+        "produces": ["application/json"],
+        "repsonses": {
+          "200": {
+            "description": "New product was created",
+            "schema": {
+              "$ref": "#/definitions/Products"
+            }
+          }
+        }
+      }
+    },
+
+    "/shopping-cart/{customerId}": {
+      "get": {
+        "tags": ["Shopping cart"],
+        "summary": "See shopping cart for a single user",
+        "description": "Returns the shopping cart for the user matched by provided userId",
+        "repsonses": {
+          "200": {
+            "description": "ok",
+            "schema": "#/definitions/ShoppingCart"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Shopping cart"],
+        "summary": "Update the shopping cart",
+        "description": "Updates an existing shopping cart based on the items send in the request body or creates a new one if no shopping cart exist for the user",
+        "parameters": [
+          {
+            "name": "shopping cart",
+            "in": "body",
+            "description": "Shopping cart we want to create",
+            "schema": { "$ref": "#/definitions/ShoppingCart" }
+          }
+        ],
+        "produces": ["application/json"],
+        "repsonses": {
+          "200": {
+            "description": "Shopping cart was updated",
+            "schema": {
+              "$ref": "#/definitions/ShoppingCart"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Products": {
+      "required": ["name", "category", "price", "_id"],
+      "properties": {
+        "_id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "name": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string"
+        },
+        "price": {
+          "type": "number"
+        }
+      },
+      "example": {
+        "_id": "6043360e1dd01f6a26f9f0c9",
+        "name": "Feuerblitz",
+        "category": "Sports equipment",
+        "price": 3920
+      }
+    },
+    "Customers": {
+      "required": ["firstName", "lastName", "email", "_id"],
+      "properties": {
+        "_id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        }
+      },
+      "example": {
+        "_id": "60427bc46b001b45c5485064",
+        "firstName": "Harry",
+        "lastName": "Potter",
+        "email": "thechosenone@mail.wiz"
+      }
+    },
+    "ShoppingCart": {
+      "required": ["customer", "orderItems"],
+      "properties": {
+        "_id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "customer": {
+          "type": "object",
+          "properties": {
+            "_id": { "type": "string" },
+            "firstName": { "type": "string" },
+            "lastName": { "type": "string" },
+            "email": { "type": "string" }
+          }
+        },
+        "orderItems": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "price": { "type": "number" },
+              "amount": { "type": "number" }
+            }
+          }
+        },
+        "orderSum": {
+          "type": "number"
+        }
+      },
+      "example": {
+        "_id": "60432e361c29166069a0b2de",
+        "customer": {
+          "_id": "60427bc46b001b45c5485064",
+          "firstName": "Harry",
+          "lastName": "Potter",
+          "email": "thechosenone@mail.wiz"
+        },
+        "orderItems": [
+          {
+            "_id": "6043360e1dd01f6a26f9f0c9",
+            "name": "Feuerblitz",
+            "category": "Sports equipment",
+            "price": 3920
+          },
+          {
+            "_id": "6043360e1dd01f6a26f9f012",
+            "name": "Wand",
+            "category": "Magical Artifacts",
+            "price": 120
+          }
+        ],
+        "orderSum": 4040
+      }
+    }
+  }
+}
