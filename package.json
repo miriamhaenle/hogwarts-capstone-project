@@ -4,7 +4,7 @@
   "description": "",
   "main": "server/src/server.js",
   "scripts": {
-    "postinstall": "cd ./client && npm install && cd ../src/server && npm install",
+    "postinstall": "cd ./client && npm install && cd ../server && npm install",
     "build": "cd ./client && npm run build",
     "test:watch": "cd ./client && npm run test:watch",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
@@ -15,7 +15,8 @@
   },
   "author": "Miriam Haenle",
   "license": "ISC",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "concurrently": "^6.0.0",
     "nodemon": "^2.0.7"
   }
