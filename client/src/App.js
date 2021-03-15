@@ -40,10 +40,25 @@ function App() {
     Snacks: <Snacks />,
   };
 
+  const addProductToDatabase = async (newProduct) => {
+    const response = await fetch(apiServerURL + '/products', {
+      method: 'POST',
+      mode: 'cors',
+      cache: 'no-cache',
+      credentials: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newProduct),
+    });
+    return response.json();
+  };
+
   const updateFavorites = (products) => setFavoriteProducts([...products]);
 
   const addProduct = (product) => {
     setProducts([...products, { ...product, id: uuidv4() }]);
+    addProductToDatabase(product);
   };
 
   const deleteCard = (id) => {
