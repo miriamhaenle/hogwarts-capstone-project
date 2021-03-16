@@ -16,32 +16,33 @@ const getWishlist = async (req, res) => {
 const postWishlist = async (req, res) => {
   const customerId = req.params.customerId;
   const productId = req.body.productId;
-
   const customerWishlist = await Wishlist.findOne({ customerId });
 
   if (customerWishlist) {
     const existingProduct = customerWishlist.products.some(
       (id) => id == productId
     );
-    customerWishlist.products.push(productId);
-
     if (existingProduct) {
       const updatedWishlist = customerWishlist.products.filter(
-        (id) => id != productId.id
+        (id) => id != productId
       );
-    }
-    const updatesList = await Wishlist.updateOne(
-      { customerId },
-      { $set: { products: customerWishlist.products } },
-      (error, result) => {
-        if (error) {
-          res.json(error);
-        } else {
-          res.json(result);
-        }
+      const newList = await Wishlist.updateOne(
+        { customerId },
+        { $set: { products: updatedWishlist } }
+      );
+      res.json(newList);
+    } else {
+      customerWishlist.products.push(productId);
+      try {
+        const updatedList = await Wishlist.updateOne(
+          { customerId },
+          { $set: { products: customerWishlist.products } }
+        );
+        res.json(updatedList);
+      } catch (error) {
+        res.json(error);
       }
-    );
-    console.log(updatesList);
+    }
   } else {
     try {
       const newWishlist = new Wishlist({ customerId, products: [productId] });
@@ -53,4 +54,14 @@ const postWishlist = async (req, res) => {
   }
 };
 
-export { getWishlist, postWishlist };
+const deleteWishlist = async (req, res) => {
+  const customerId = req.params.customerId;
+  try {
+    const result = await Wishlist.deleteOne({ customerId });
+    res.json(result);
+  } catch (error) {
+    res.json(error);
+  }
+};
+
+export { getWishlist, postWishlist, deleteWishlist };
