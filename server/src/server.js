@@ -14,6 +14,7 @@ const connectionString = `mongodb://localhost:27017/wizard-shop`;
 mongoose.connect(connectionString, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  useFindAndModify: false,
 });
 
 server.get('/', (req, res) =>
