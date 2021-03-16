@@ -40,7 +40,6 @@ describe('Wishlist', () => {
 
   it.only('should remove a favorite item from wishlist if users tries to add it a second time', () => {
     const favoriteProductOne = { productId: '604f8a9f189503f627a0bd78' };
-    const favoriteProductTwo = { productId: '604f8a43189503f627a0bd77' };
     cy.request(
       'POST',
       'http://localhost:4000/api/wishlist/604632fb4a84fec80228cd50',

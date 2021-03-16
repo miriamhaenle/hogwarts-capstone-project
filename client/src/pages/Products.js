@@ -72,6 +72,7 @@ export default function Products({
                 key={index}
                 onClick={() => filterByCategory(category.name)}
                 active={category.isActive}
+                data-testid={`category_${index}`}
               >
                 {categoryPlaceholders[category.name]}
               </Category>
