@@ -76,6 +76,7 @@ export default function Products({
                 {categoryPlaceholders[category.name]}
               </Category>
             ))}
+
             <Category onClick={() => resetCategories(products)}>Reset</Category>
           </Categories>
           <Wrapper>
