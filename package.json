@@ -12,7 +12,7 @@
     "server": "nodemon ./server/src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./server/src/server.js",
-    "test:e2e": "DB_NAME=wizard-shop-test start-server-and-test 'npm run dev' http://localhost:4000 cy:open",
+    "test:e2e": "DB_NAME=wizard-shop-test start-server-and-test 'npm run dev' http://localhost:3000 cy:open",
     "cy:open": "cd client && npm run cy:open"
   },
   "author": "Miriam Haenle",

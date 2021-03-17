@@ -15,7 +15,7 @@ import { ReactComponent as HomeSupplies } from './assets/mortar.svg';
 import { ReactComponent as Snacks } from './assets/snack.svg';
 
 function App() {
-  const apiServerURL = process.env.REACT_APP_API_SERVER_URL;
+  const apiServerURL = '/api';
   const [products, setProducts] = useLocalStorage('Products', []);
 
   const [favoriteProducts, setFavoriteProducts] = useLocalStorage(

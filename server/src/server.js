@@ -6,13 +6,13 @@ import shoppingCartRoutes from './routes/shoppingCartRoutes.routes.js';
 import productRoutes from './routes/products.routes.js';
 import customerRoutes from './routes/customerRoutes.routes.js';
 import wishlistRoutes from './routes/wishlist.routes.js';
+import maintenanceRoutes from './routes/maintenanceRoutes.routes.js';
 
 const result = dotenv.config();
 const server = express();
 server.use(cors());
 server.use(express.json());
 const DB_NAME = process.env.DB_NAME || 'wizard-shop';
-console.log(DB_NAME);
 
 const connectionString = `mongodb://localhost:27017/${DB_NAME}`;
 mongoose.connect(connectionString, {
@@ -30,6 +30,7 @@ server.use('/api', [
   customerRoutes,
   productRoutes,
   wishlistRoutes,
+  maintenanceRoutes,
 ]);
 
 const port = 4000;
