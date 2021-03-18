@@ -88,7 +88,7 @@ export default function Products({
                 onDeleteCard={() => deleteCard(product.id)}
                 onAddToFavorites={() => addFavoriteProduct(product)}
                 isFavorite={favoriteProducts.some(
-                  (favoriteProduct) => product._id === favoriteProduct.id
+                  (favoriteProduct) => product._id === favoriteProduct._id
                 )}
                 placeholderImage={categoryPlaceholders}
                 addToCart={() => addToCart(product)}

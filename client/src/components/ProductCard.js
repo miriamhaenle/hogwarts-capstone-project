@@ -21,7 +21,12 @@ export default function ProductCard({
       <CardContent>
         <p>{product.category}</p>
         <h4>{product.name}</h4>
-        <FavoriteButton isFavorite={isFavorite} onClick={onAddToFavorites}>
+        <FavoriteButton
+          isFavorite={isFavorite}
+          onClick={onAddToFavorites}
+          data-testid="favorite-button"
+          data-isfavorite={isFavorite ? 'isFavorite' : ''}
+        >
           <div></div>
         </FavoriteButton>
         <Description>

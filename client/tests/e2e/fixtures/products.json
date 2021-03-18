@@ -6,7 +6,8 @@
     "currency": "Sickle",
     "category": "Magical artifacts",
     "packageSize": "S",
-    "supportContact": "olivander-wands@mail.wiz"
+    "supportContact": "olivander-wands@mail.wiz",
+    "onSale": false
   },
   {
     "tags": ["SPEED", "FUN"],

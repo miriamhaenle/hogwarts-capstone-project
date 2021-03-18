@@ -57,7 +57,7 @@ function App() {
   const updateFavorites = (products) => setFavoriteProducts([...products]);
 
   const addProduct = (product) => {
-    setProducts([...products, { ...product, id: uuidv4() }]);
+    setProducts([...products, { ...product }]);
     addProductToDatabase(product);
   };
 
@@ -69,12 +69,12 @@ function App() {
   const addFavoriteProduct = (product) => {
     if (
       favoriteProducts.some(
-        (favoriteProduct) => product.id === favoriteProduct.id
+        (favoriteProduct) => product._id === favoriteProduct._id
       )
     ) {
       setFavoriteProducts(
         favoriteProducts.filter(
-          (favoriteProduct) => favoriteProduct.id !== product.id
+          (favoriteProduct) => favoriteProduct._id !== product._id
         )
       );
     } else {

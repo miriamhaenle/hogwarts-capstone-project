@@ -1,0 +1,10 @@
+{
+  "tags": ["SPEED", "FUN"],
+  "name": "Feuerblitz",
+  "price": 3000,
+  "currency": "Galleon",
+  "category": "Sports equipment",
+  "packageSize": "M",
+  "supportContact": "wizardingsportsequpment@mail.com",
+  "onSale": false
+}
