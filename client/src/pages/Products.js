@@ -14,7 +14,7 @@ export default function Products({
   addToCart,
 }) {
   let { path, url } = useRouteMatch();
-  const [displayedProducts, setDisplayedProducts] = useState(products);
+  const [displayedProducts, setDisplayedProducts] = useState([]);
   const [categories, setCategories] = useState([]);
 
   const uniqueCategories = (products) => {
@@ -25,9 +25,9 @@ export default function Products({
       isActive: false,
     }));
   };
-
   useEffect(() => {
     setCategories(uniqueCategories(products));
+    setDisplayedProducts(products);
   }, [products]);
 
   const filterByCategory = (categoryToUpdate) => {

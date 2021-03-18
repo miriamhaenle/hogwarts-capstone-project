@@ -45,4 +45,10 @@ describe('Tags component', () => {
     cy.get(TAG_SELECTOR).first().contains('ONE');
     cy.get(TAG_SELECTOR).last().contains('THREE');
   });
+
+  it('should not delete the last when user started typing and presses backspace', () => {
+    addThreeTags();
+    cy.get(TAG_INPUT_SELECTOR).type('Fou{backspace}');
+    cy.get(TAG_SELECTOR).should('have.length', 3);
+  });
 });

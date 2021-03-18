@@ -15,7 +15,7 @@ export default function ProductCard({
   const [isAdminView, setIsAdminView] = useState(false);
 
   return (
-    <Card>
+    <Card data-testid="product-card">
       {isAdminView && <DeleteButton onClick={onDeleteCard}>x</DeleteButton>}
       <ImageWrapper>{placeholderImage[product.category]}</ImageWrapper>
       <CardContent>
