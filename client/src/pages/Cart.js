@@ -7,7 +7,7 @@ export default function Cart({ cartItems }) {
       <h1>Cart</h1>
       {cartItems &&
         cartItems.map((item) => (
-          <Item key={item._id}>
+          <Item key={item._id} data-testid="orderItem">
             <h4>{item.productId.name}</h4>
             <p>
               {item.productId.price} {item.productId.currency ?? 'Galleons'}

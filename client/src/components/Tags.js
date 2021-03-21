@@ -18,7 +18,7 @@ export default function Tags({ headline, tags, onUpdateTags, onDeleteTag }) {
       setSelectedTagIndex(-1);
     }
 
-    if (event.key === 'Backspace') {
+    if (event.key === 'Backspace' && event.target.value === '') {
       selectedTagIndex >= 0
         ? onDeleteTag(tags[selectedTagIndex])
         : onDeleteTag(tags[tags.length - 1]);

@@ -4,8 +4,13 @@ import Product from '../models/Product.model.js';
 async function postProduct(req, res) {
   const newProduct = new Product({
     name: req.body.name,
-    category: req.body.category,
     price: req.body.price,
+    currency: req.body.currency,
+    category: req.body.category,
+    packageSize: req.body.packageSize,
+    supportContact: req.body.supportContact,
+    tags: req.body.tags,
+    onSale: req.body.onSale,
   });
   try {
     const product = await saveToDb(newProduct);
