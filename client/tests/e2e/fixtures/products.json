@@ -1,0 +1,51 @@
+[
+  {
+    "tags": ["Wand", "Magic", "Core of gold"],
+    "name": "ElderWand",
+    "price": 200,
+    "currency": "Sickle",
+    "category": "Magical artifacts",
+    "packageSize": "S",
+    "supportContact": "olivander-wands@mail.wiz"
+  },
+  {
+    "tags": ["SPEED", "FUN"],
+    "name": "Feuerblitz",
+    "price": 3000,
+    "currency": "Galleon",
+    "category": "Sports equipment",
+    "packageSize": "M",
+    "supportContact": "wizardingsportsequpment@mail.com",
+    "onSale": false
+  },
+  {
+    "tags": ["SWEET", "EVERY FLAVOR"],
+    "name": "Bertie Botts Beans",
+    "price": 20,
+    "currency": "Knut",
+    "category": "Snacks",
+    "packageSize": "S",
+    "supportContact": "snacks@sweets.coom",
+    "onSale": true
+  },
+  {
+    "tags": [],
+    "name": "Snow Owl",
+    "price": 500,
+    "currency": "Sickle",
+    "category": "Pets",
+    "packageSize": "M",
+    "supportContact": "pets@wiz.com",
+    "onSale": false
+  },
+  {
+    "tags": ["SPELLS", "BOOKS", "2020"],
+    "name": "The 10 most used spells in 2020",
+    "price": 150,
+    "currency": "Knut",
+    "category": "School supplies",
+    "packageSize": "S",
+    "supportContact": "library@hogwarts.com",
+    "onSale": false
+  }
+]

@@ -1,0 +1,11 @@
+{
+  "tags": ["Wand", "Magic", "Core of gold"],
+  "name": "ElderWand",
+  "price": 200,
+  "currency": "Sickle",
+  "category": "Magical artifacts",
+  "packageSize": "S",
+  "supportContact": "olivander-wands@mail.wiz",
+  "_id": 1,
+  "id": 1
+}

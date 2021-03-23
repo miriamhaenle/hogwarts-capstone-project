@@ -15,7 +15,7 @@ import { ReactComponent as HomeSupplies } from './assets/mortar.svg';
 import { ReactComponent as Snacks } from './assets/snack.svg';
 
 function App() {
-  const apiServerURL = process.env.REACT_APP_API_SERVER_URL;
+  const apiServerURL = '/api';
   const [products, setProducts] = useLocalStorage('Products', []);
 
   const [favoriteProducts, setFavoriteProducts] = useLocalStorage(
@@ -40,10 +40,25 @@ function App() {
     Snacks: <Snacks />,
   };
 
+  const addProductToDatabase = async (newProduct) => {
+    const response = await fetch(apiServerURL + '/products', {
+      method: 'POST',
+      mode: 'cors',
+      cache: 'no-cache',
+      credentials: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newProduct),
+    });
+    return response.json();
+  };
+
   const updateFavorites = (products) => setFavoriteProducts([...products]);
 
   const addProduct = (product) => {
     setProducts([...products, { ...product, id: uuidv4() }]);
+    addProductToDatabase(product);
   };
 
   const deleteCard = (id) => {

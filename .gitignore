@@ -65,4 +65,5 @@ jspm_packages/
 .env
 .env.test
 .env.development.local
+.env.development
 
