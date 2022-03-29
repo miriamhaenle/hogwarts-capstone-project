@@ -15,13 +15,18 @@ export default function ProductCard({
   const [isAdminView, setIsAdminView] = useState(false);
 
   return (
-    <Card>
+    <Card data-testid="product-card">
       {isAdminView && <DeleteButton onClick={onDeleteCard}>x</DeleteButton>}
       <ImageWrapper>{placeholderImage[product.category]}</ImageWrapper>
       <CardContent>
         <p>{product.category}</p>
         <h4>{product.name}</h4>
-        <FavoriteButton isFavorite={isFavorite} onClick={onAddToFavorites}>
+        <FavoriteButton
+          isFavorite={isFavorite}
+          onClick={onAddToFavorites}
+          data-testid="favorite-button"
+          data-isfavorite={isFavorite ? 'isFavorite' : ''}
+        >
           <div></div>
         </FavoriteButton>
         <Description>

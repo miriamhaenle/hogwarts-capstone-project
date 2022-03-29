@@ -65,7 +65,7 @@ export default function ProductForm({ onSubmitForm }) {
   }
 
   return (
-    <Form onSubmit={submitForm}>
+    <Form onSubmit={submitForm} data-testid="add-product-form">
       <h2>Add new Product</h2>
 
       <label htmlFor="name">Product Name</label>
